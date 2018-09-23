@@ -1,3 +1,4 @@
+"""This module contains classes order and its method"""
 import uuid
 from datetime import datetime
 food_orders = []
@@ -51,3 +52,8 @@ class Order:
                 cls.data["user_name"] = user_name
                 food_orders.append(cls.data)
                 return "Order Made Successfully"
+
+    @classmethod
+    def get_all_orders(cls):
+        """ Return all the food_orders"""
+        return food_orders
