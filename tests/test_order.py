@@ -18,7 +18,7 @@ class TestOrder(TestBase):
         response = self.client.post('api/v1/orders/',
                                     content_type='application/json',
                                     data=json.dumps(past_order_date))
-        self.assertIn("Invalid Date", str(response.data))
+        self.assertIn("Order cannot have a past date", str(response.data))
 
     def test_duplicate_order_creation(self):
         self.client.post('api/v1/orders/',
@@ -36,17 +36,3 @@ class TestOrder(TestBase):
         self.assertEqual(response.status_code, 201)
         response = self.client.get('api/v1/orders/')
         self.assertEqual(response.status_code, 200)
-
-    def test_get_order_by_id(self):
-        response = self.client.post('api/v1/orders/',
-                                    content_type='application/json',
-                                    data=json.dumps(test_order3))
-        self.assertEqual(response.status_code, 201)
-        response = self.client.get('api/v1/orders/')
-        self.assertEqual(response.status_code, 200)
-        results = json.loads(response.data.decode())
-        for order in results:
-            result = self.client.get('api/v1/orders/{}'
-                                     .format(order['order_id']))
-            self.assertEqual(result.status_code, 200)
-            self.assertIn(order['order_id'], str(result.data))

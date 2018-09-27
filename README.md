@@ -6,9 +6,16 @@
   Fast-Food-Fast is a food delivery service app for a restaurant.
 
 # Features
-- Make a food order.
-- Get all food orders.
-- Update food order
+- Users can make a food order.
+- Users can get all food orders.
+- Admin users can update a food order.
+
+  METHOD	Endpoint	Description	Body (json)
+  GET	/api/v1/orders/	Get all orders	
+  GET	/api/v1/orders/id	Get specific orders 
+  POST	/api/v1/orders	Place a new orders	
+  PUT	/api/v1/orders/id	Update a specific orders status 
+
 
 # Requirements and Tools
 - Source Code Editor
@@ -19,7 +26,14 @@
 - Install python 3.6.5
 - Install vitual environment using, python -m venv env
 - Install project requirements using, pip install -r reuirements.txt
-- Clone the project repository hosted using, git clone https://github.com/alexkayabula/Fast-Food-Fast.git
+- Clone the project repository hosted using, git clone    https://github.com/alexkayabula/Fast-Food-Fast.git
+
+# Web Hosting
+- Heroku https://fast-food-fast-heroku.herokuapp.com/api/v1/orders/
+
+# Testing
+- Install nosetests
+- To run tests with coverage, use nosetests --with-coverage --cover-package=app && coverage report
 
 # Technologies
 - Python

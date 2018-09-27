@@ -24,34 +24,20 @@ class Order:
         return False
 
     @classmethod
-    def valid_date(cls, order_date):
-        """Check if the given date is less than the current date"""
-        try:
-            order_date = datetime.strptime(order_date, '%Y-%m-%d').date()
-        except ValueError:
-            return "Invalid Date Format"
-        if order_date <= order_date.today():
-            return False
-        return True
-
-    @classmethod
     def make_order(cls, item_name, price, order_date, user_name):
         """A method for making a order"""
         cls.data = {}
         if cls.existing_order(item_name, price, order_date, user_name):
             return "Order Already Exists"
         else:
-            if not cls.valid_date(order_date):
-                return "Invalid Date"
-            else:
-                cls.data['order_id'] = uuid.uuid1()
-                cls.data['item_name'] = item_name
-                cls.data['price'] = price
-                cls.data["order_date"] = order_date
-                cls.data["status"] = 'Pending'
-                cls.data["user_name"] = user_name
-                food_orders.append(cls.data)
-                return "Order Made Successfully"
+            cls.data['order_id'] = uuid.uuid1()
+            cls.data['item_name'] = item_name
+            cls.data['price'] = price
+            cls.data["order_date"] = order_date
+            cls.data["status"] = 'Pending'
+            cls.data["user_name"] = user_name
+            food_orders.append(cls.data)
+            return "Order Made Successfully"
 
     @classmethod
     def get_all_orders(cls):
