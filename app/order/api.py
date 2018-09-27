@@ -6,8 +6,9 @@ from app.validate import validate_date, validate_order
 
 
 class OrderAPI(MethodView):
-
-    def get(self, order_id):
+     
+    @classmethod
+    def get(cls, order_id):
         try:
             if order_id:
                 order_id = uuid.UUID(order_id)
@@ -24,8 +25,9 @@ class OrderAPI(MethodView):
                 return jsonify({"Orders": orders}), 200
         except ValueError:
             return jsonify("Invalid order_id, Server Error"), 500
-
-    def post(self):
+    
+    @classmethod
+    def post(cls):
         data = request.json
         item_name = data["item_name"]
         price = data["price"]
@@ -41,8 +43,9 @@ class OrderAPI(MethodView):
                 return jsonify({'message': new_order}), 201
             return jsonify({'message': new_order}), 409
         return jsonify({'message': validate_order(data)}), 406
-
-    def put(self, order_id):
+    
+    @classmethod
+    def put(cls, order_id):
         if order_id:
             order_id = uuid.UUID(order_id)
             orders = Order.get_all_orders()

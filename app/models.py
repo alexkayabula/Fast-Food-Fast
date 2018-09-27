@@ -1,6 +1,5 @@
 """This module contains classes order and its method"""
 import uuid
-from datetime import datetime
 food_orders = []
 
 
