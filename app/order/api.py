@@ -46,11 +46,14 @@ class OrderAPI(MethodView):
     
     @classmethod
     def put(cls, order_id):
-        if order_id:
-            order_id = uuid.UUID(order_id)
-            orders = Order.get_all_orders()
-            for order in orders:
-                if order_id == order['order_id']:
-                    order['status'] = 'Completed'
-                    return jsonify({'message': "Order Completed"}), 200
-            return jsonify({'message': "Order Not Found "}), 404
+        try:
+            if order_id:
+                order_id = uuid.UUID(order_id)
+                orders = Order.get_all_orders()
+                for order in orders:
+                    if order_id == order['order_id']:
+                        order['status'] = 'Completed'
+                        return jsonify({'message': "Order Completed"}), 200
+                return jsonify({'message': "Order Not Found "}), 404
+        except ValueError:
+            return jsonify("Invalid order_id, Server Error"), 500
