@@ -28,7 +28,6 @@
 # Testing
 - Install nosetests
 - To run tests with coverage, use nosetests --with-coverage --cover-package=app && coverage report
-
 # Technologies
 - Python
 - Flask
