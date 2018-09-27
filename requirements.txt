@@ -1,8 +1,13 @@
 Blueprints==2.3.0.2
+certifi==2018.8.24
+chardet==3.0.4
 Click==7.0
 coverage==4.5.1
+coveralls==1.5.0
+docopt==0.6.2
 Flask==1.0.2
 get==1.0.3
+idna==2.7
 itsdangerous==0.24
 Jinja2==2.10
 jsonify==0.5
@@ -13,5 +18,7 @@ post==1.0.2
 public==1.0.3
 query-string==1.0.2
 request==1.0.2
+requests==2.19.1
 six==1.11.0
+urllib3==1.23
 Werkzeug==0.14.1
