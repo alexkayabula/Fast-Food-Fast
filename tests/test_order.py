@@ -40,7 +40,7 @@ class TestOrder(TestBase):
         self.assertEqual(response.status_code, 201)
         response = self.client.get('api/v1/orders/')
         self.assertEqual(response.status_code, 200)
-    
+
     def test_for_empty_input_fields(self):
         """Test for empty fields"""
         self.client.post('api/v1/orders/',
@@ -72,7 +72,7 @@ class TestOrder(TestBase):
         response = self.client.post('api/v1/orders/',
                                     content_type='application/json',
                                     data=json.dumps(test_invalid_order2))
-        self.assertIn("Username should only contain alphabetic characters", 
+        self.assertIn("Username should only contain alphabetic characters",
                       str(response.data))
         self.assertEqual(response.status_code, 406)
 
@@ -84,7 +84,7 @@ class TestOrder(TestBase):
         response = self.client.post('api/v1/orders/',
                                     content_type='application/json',
                                     data=json.dumps(test_invalid_order3))
-        self.assertIn("Price should only contain Numeric characters", 
+        self.assertIn("Price should only contain Numeric characters",
                       str(response.data))
         self.assertEqual(response.status_code, 406)
 
@@ -98,11 +98,3 @@ class TestOrder(TestBase):
         order_id = test_order_id['order_id']
         response = self.client.get('api/v1/orders/{}'.format(order_id))
         self.assertEqual(response.status_code, 404)
-
-    def test_for_class_order_initialization(self):
-        o = Order(order_id, item_name, price, order_date, user_name, status)
-        self.assertEquals(o.order_id, order_id)
-        self.assertEquals(o.item_name, item_name)
-        self.assertEquals(o.price, price)
-        self.assertEquals(o.order_order_date, order_date)
-        self.assertEquals(o.user_name, user_name)
