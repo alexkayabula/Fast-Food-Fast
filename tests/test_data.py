@@ -76,6 +76,13 @@ test_invalid_order3 = {
     "user_name":  "Mozzy"
 }
 
+test_invalid_date = {
+    "item_name": "chicken",
+    "price": "7000",
+    "order_date": "25-9",
+    "user_name":  "Mozzy"
+}
+
 test_valid_order = {
     "item_name": "Chips",
     "price": "4000",
@@ -96,6 +103,14 @@ test_order_id = {
         "price": "four thousand",
         "order_date": "2018-9-29",
         "user_name":  "Mozzy"
+        }
+
+test_order_id1 = {
+        "order_id": str(uuid.uuid1()),
+        "item_name": "Pilao",
+        "price": "6000",
+        "order_date": "2018-9-29",
+        "user_name":  "Joel"
         }
 
 Orders = [{

@@ -6,11 +6,7 @@ food_orders = []
 class Order:
     def __init__(self, order_id, item_name, price, order_date, user_name,
                  status):
-        self.order_id = order_id
-        self.item_name = item_name
-        self.price = price
-        self.order_date = order_date
-        self.user_name = user_name
+        pass
 
     @classmethod
     def existing_order(cls, item_name, price, order_date, user_name):
