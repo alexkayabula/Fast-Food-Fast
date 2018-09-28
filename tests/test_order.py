@@ -1,8 +1,7 @@
-from flask import json, request, jsonify
+from flask import json, jsonify
 import uuid
 from test_data import*
 from test_base import TestBase
-from app.models import Order
 
 
 class TestOrder(TestBase):

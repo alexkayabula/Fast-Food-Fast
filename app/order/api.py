@@ -6,14 +6,14 @@ from app.validate import validate_date, validate_order
 
 
 class OrderAPI(MethodView):
-     
+
     @classmethod
     def get(cls, order_id):
         try:
             if order_id:
                 order_id = uuid.UUID(order_id)
                 orders = Order.get_all_orders()
-                for order in orders:   
+                for order in orders:
                     if order_id == order['order_id']:
                         return jsonify(order), 200
                 return jsonify({'message': "Order Not Found "}), 404
@@ -25,7 +25,7 @@ class OrderAPI(MethodView):
                 return jsonify({"Orders": orders}), 200
         except ValueError:
             return jsonify("Invalid order_id, Server Error"), 500
-    
+
     @classmethod
     def post(cls):
         data = request.json
@@ -43,7 +43,7 @@ class OrderAPI(MethodView):
                 return jsonify({'message': new_order}), 201
             return jsonify({'message': new_order}), 409
         return jsonify({'message': validate_order(data)}), 406
-    
+
     @classmethod
     def put(cls, order_id):
         try:
