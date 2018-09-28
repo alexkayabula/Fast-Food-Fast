@@ -13,7 +13,7 @@ class OrderAPI(MethodView):
             if order_id:
                 order_id = uuid.UUID(order_id)
                 orders = Order.get_all_orders()
-                for order in orders:
+                for order in orders:   
                     if order_id == order['order_id']:
                         return jsonify(order), 200
                 return jsonify({'message': "Order Not Found "}), 404
