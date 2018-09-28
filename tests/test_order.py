@@ -87,7 +87,7 @@ class TestOrder(TestBase):
                       str(response.data))
         self.assertEqual(response.status_code, 406)
 
-    def test_get_order_by_id(self):
+    def test_order_not_found(self):
         """Test to get order by id"""
         self.client.post('api/v1/orders/',
                          content_type='application/json',
@@ -97,3 +97,15 @@ class TestOrder(TestBase):
         order_id = test_order_id['order_id']
         response = self.client.get('api/v1/orders/{}'.format(order_id))
         self.assertEqual(response.status_code, 404)
+
+    def invalid_date_format(self):
+        """Test for invalid date"""
+        self.client.post('api/v1/orders/',
+                         content_type='application/json',
+                         data=json.dumps(test_invalid_date))
+        response = self.client.post('api/v1/orders/',
+                                    content_type='application/json',
+                                    data=json.dumps(test_invalid_date))
+        self.assertIn("Incorrect date, should be YYYY-MM-DD",
+                      str(response.data))
+        self.assertEqual(response.status_code, 406)

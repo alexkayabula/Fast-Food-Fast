@@ -11,6 +11,9 @@
 - Users can get all food orders.
 - Admin users can update a food order.
 
+  These are the endpoints
+
+
 # Requirements and Tools
 - Source Code Editor
 - Python 3.6.5
