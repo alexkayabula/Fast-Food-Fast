@@ -142,12 +142,7 @@ class OrderDbQueries(Database):
                 elif order['status'] == 'Processing':
                     query = "UPDATE orders SET status = 'Completed' WHERE order_id = order_id"
                     self.cur.execute(query)
-        
 
-
-
-        
-   
 
 class MenuDbQueries(Database):
     """This class handles database transactions for the menu"""
