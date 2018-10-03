@@ -26,9 +26,7 @@ class MenuView(MethodView):
                         }
                         return make_response(jsonify(response)), 409
                 menu_db.insert_menu_data(data)
-                response = {
-                    'message': 'You added a food item successfully.',
-                }
+                response = {'message': 'You added a food item successfully.'}
                 return make_response(jsonify(response)), 201
             return jsonify({'message': validate_menu(data)}), 201
         return jsonify({'message' : "You do not have admin rights"})
@@ -43,5 +41,3 @@ class MenuView(MethodView):
                     {"msg": " There is no menu item at the moment"}), 200
             return jsonify(menu), 200
         return jsonify({'message' : "You do not have admin rights"})
-        
-

@@ -88,16 +88,6 @@ class UserDbQueries(Database):
             users.append(row)
         return users
 
-    def check_admin_status(self):
-        """ Fetches all order recods from the database"""
-        self.cur.execute("SELECT * FROM users WHERE admin_status = 'True'")
-        rows = self.cur.fetchall()
-        admin_users = []
-        for row in rows:
-            row = {'user_id': row[0], 'name': row[1], 'username': row[2], 'admin_status': row[3]}
-            admin_users.append(row)
-        return  admin_users
-
 
 class OrderDbQueries(Database):
     """This class handles database transactions for the order"""
@@ -135,11 +125,28 @@ class OrderDbQueries(Database):
             row = {'order_id': row[0], 'item_name': row[1], 'quantity': row[2], 'username' : row[3], 'status' : row[4]}
             orders.append(row)
         return orders
+
     def get_by_argument(self, table, column_name,argument):
         query = "SELECT * FROM {} WHERE {} = '{}';".format(table, column_name, argument)
         self.cur.execute(query)
         result = self.cur.fetchone()
         return result
+
+    def update_order_status(self, order_id):
+        orders = OrderDbQueries().fetch_all_orders_by_parameter('orders', 'order_id', order_id)
+        for order in orders:
+            if order_id:
+                if order['status'] == 'New':
+                    query = "UPDATE orders SET status = 'Processing' WHERE order_id = order_id"
+                    self.cur.execute(query)
+                elif order['status'] == 'Processing':
+                    query = "UPDATE orders SET status = 'Completed' WHERE order_id = order_id"
+                    self.cur.execute(query)
+        
+
+
+
+        
    
 
 class MenuDbQueries(Database):

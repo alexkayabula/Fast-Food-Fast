@@ -88,15 +88,6 @@ class UserDbQueries(Database):
             users.append(row)
         return users
 
-    def check_admin_status(self):
-        """ Fetches all order recods from the database"""
-        self.cur.execute("SELECT * FROM users WHERE admin_status = 'True'")
-        rows = self.cur.fetchall()
-        admin_users = []
-        for row in rows:
-            row = {'user_id': row[0], 'name': row[1], 'username': row[2], 'admin_status': row[3]}
-            admin_users.append(row)
-        return  admin_users
 
 
 class OrderDbQueries(Database):
@@ -140,7 +131,8 @@ class OrderDbQueries(Database):
         self.cur.execute(query)
         result = self.cur.fetchone()
         return result
-   
+            
+
 
 class MenuDbQueries(Database):
     """This class handles database transactions for the menu"""
