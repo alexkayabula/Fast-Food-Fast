@@ -53,4 +53,4 @@ Install the dependencies
  - pip install -r requirements.txt
 
 # Unittesting
-- nosetests --with-coverage --cover-package=app && coverage report`
+- nosetests --with-coverage --cover-package=app && coverage report
