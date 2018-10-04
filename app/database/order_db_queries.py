@@ -3,7 +3,7 @@ from urllib.parse import urlparse
 import psycopg2
 from werkzeug.security import generate_password_hash
 from flask import current_app as app
-from database import Database
+from .database import Database
 
 
 class OrderDbQueries(Database):
