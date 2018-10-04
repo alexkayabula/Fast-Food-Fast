@@ -1,9 +1,10 @@
 from flask.views import MethodView
 from flask import Flask, jsonify, request, make_response, current_app as app
-from app.models import Menu
+from app.menu.menu_model import Menu
 from app.auth.decorator import token_required
 from app.validate import validate_menu
-from app.database import Database, MenuDbQueries
+from app.database.database import Database
+from app.database.menu_db_queries import MenuDbQueries
 
 
 class MenuView(MethodView):

@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from config import app_config
-from app.database import Database
+from app.database.database import *
 from app.error_handler import *
 
 

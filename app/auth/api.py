@@ -5,10 +5,10 @@ import jwt
 from flask.views import MethodView
 from flask import jsonify, request, make_response
 from flask import current_app as app
-from app.models import User
+from app.auth.auth_model import User
 from app.validate import validate_user, validate_login
-from app.database import Database, UserDbQueries
-
+from app.database.database import Database
+from app.database.user_db_queries import UserDbQueries
 
 class RegistrationView(MethodView):
     """This class-based view registers a new user."""
