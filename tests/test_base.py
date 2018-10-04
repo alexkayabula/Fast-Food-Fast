@@ -2,7 +2,7 @@ import unittest
 import psycopg2
 from flask import json
 from app import create_app
-from app.database import Database
+from app.database.database import Database
 
 
 class TestBase(unittest.TestCase):

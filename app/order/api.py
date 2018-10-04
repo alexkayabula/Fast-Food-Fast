@@ -1,9 +1,14 @@
 from flask.views import MethodView
 from flask import Flask, jsonify, request, make_response, current_app as app
-from app.models import Menu, User, Order
+from app.order.order_model import Order
+from app.menu.menu_model import Menu
+from app.auth.auth_model import User
 from app.auth.decorator import token_required
 from app.validate import validate_order
-from app.database import Database, MenuDbQueries, OrderDbQueries, UserDbQueries
+from app.database.database import Database
+from app.database.order_db_queries import OrderDbQueries
+from app.database.menu_db_queries import MenuDbQueries
+
 
 
 class OrderView(MethodView):
