@@ -24,6 +24,8 @@ class TestingConfiguration(Config):
 class ProductionConfiguration(Config):
     """Configurations for Production."""
     DEBUG = False
+    DATABASE_URL = 'postgres://eyzxekqeckzgjc:78e620ab085ae62514bd49db48ce33ec3c50df764c5822e6d8ec9d7607527534@ec2-23-23-80-20.compute-1.amazonaws.com:5432/dac1le4vb3d4of'
+
 
 app_config = {
     'DEFAULT': DevelopmentConfiguration,
