@@ -109,7 +109,6 @@ class TestBase(unittest.TestCase):
                                              self.get_token()})
         return response
 
-        
     def tearDown(self):
         db = Database(
             'postgresql://postgres:k0779211758aj@localhost:5432/test_db')
