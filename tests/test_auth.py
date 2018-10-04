@@ -20,7 +20,7 @@ class TestAuth(TestBase):
                       str(response.data))
         self.assertEqual(response.status_code, 201)
 
-    def test_register_invalid_characters(self):
+    def test_register_with_invalid_characters(self):
         """ Tests creating a new user with invalid characters """
         inv_char = {
             'name': '@#$%',

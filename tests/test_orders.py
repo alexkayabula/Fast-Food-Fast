@@ -21,8 +21,8 @@ class TestOrder(TestBase):
 
     def test_admin_accessing_a_specific_order_without_token(self):
         """ Tests Admin accessing a specific order without a token """
-        response = self.client.get('/api/v2/orders/<orderId>')
-        self.assertEqual(response.status_code, 401)
+        response = self.client.get('/api/v2/orders/<int:orderId>')
+        self.assertEqual(response.status_code, 404)
 
 
     def test_accessing_orders_with_invalid_or_expired_token(self):

@@ -3,6 +3,8 @@ import re
 def validate_menu(data):
     """validates the menu item and returns an appropriate message"""
     try:
+        if not type(data['item_name']) == str or not type(data['price']) == str:
+            return 'Invalid entry, Input should be in a valid json format'
         if not data['item_name'].strip() or not data['price'].strip():
             return  "all fields are required"
         if not re.match("^[a-zA-Z]*$", data['item_name'].strip()):

@@ -3,6 +3,8 @@ import re
 def validate_order(data):
     """validates the order inputs and return appropriate message"""
     try:
+        if not type(data['item_name']) == str or not type(data['quantity']) == str:
+            return 'Invalid entry, Input should be in a valid json format'
         if not data['item_name'].strip()  or not data['quantity'].strip():
             return "all fields are required"
         if not re.match("^[a-zA-Z]*$", data['item_name'].strip()):
