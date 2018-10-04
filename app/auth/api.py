@@ -6,7 +6,7 @@ from flask.views import MethodView
 from flask import jsonify, request, make_response
 from flask import current_app as app
 from app.auth.auth_model import User
-from app.validate import validate_user, validate_login
+from app.auth.auth_helper import validate_user, validate_login
 from app.database.database import Database
 from app.database.user_db_queries import UserDbQueries
 
