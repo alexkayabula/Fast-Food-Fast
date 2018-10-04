@@ -40,12 +40,12 @@ class OrderView(MethodView):
     
 class OrderManage(MethodView):
     decorators = [token_required]
-    def get(self, current_user, order_id):
+    def get(self, current_user, orderId):
         """Method for the admin to view orders"""
         order_db = OrderDbQueries()
         if current_user.username == 'admin':
-            if order_id:
-                query = order_db.fetch_all_orders_by_parameter('orders', 'order_id', order_id)
+            if orderId:
+                query = order_db.fetch_all_orders_by_parameter('orders', 'orderId', orderId)
                 for order in query:
                    return jsonify({"orders" : order}), 200
                 return jsonify({'msg': "order not found "}), 404
@@ -57,13 +57,13 @@ class OrderManage(MethodView):
                 return jsonify({"orders" : orders}), 200
         return jsonify({'message' : "You do not have admin rights."})
 
-    def put(self, current_user, order_id):
+    def put(self, current_user, orderId):
         """Method for the admin to update an order"""
         order_db = OrderDbQueries()
         if current_user.username == 'admin':
-            if order_id:
-                query = order_id.fetch_by_parameter('orders', 'order_id', order_id)
-                order_db.update_order_status(order_id)
+            if orderId:
+                query = orderId.fetch_by_parameter('orders', 'orderId', orderId)
+                order_db.update_order_status(orderId)
                 return jsonify ({'message' : query})
             return jsonify ({'message' : "Order not Found"})
         return jsonify({'message' : "You do not have admin rights."})
