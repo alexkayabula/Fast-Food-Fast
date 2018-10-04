@@ -44,7 +44,7 @@ class Database:
             pass
         
         create_table = "CREATE TABLE IF NOT EXISTS orders\
-        (order_id SERIAL PRIMARY KEY, item_name text,\
+        (orderId SERIAL PRIMARY KEY, item_name text,\
         quantity text, username text, status text)"
         self.cur.execute(create_table)
 
@@ -108,7 +108,7 @@ class OrderDbQueries(Database):
         rows = self.cur.fetchall()
         orders = []
         for row in rows:
-            row = {'order_id': row[0], 'item_name': row[1],
+            row = {'orderId': row[0], 'item_name': row[1],
                    'quantity': row[2],
                     "username": row[3], 'status': row[4],
                    }
@@ -122,7 +122,7 @@ class OrderDbQueries(Database):
         rows = self.cur.fetchall()
         orders = []
         for row in rows:
-            row = {'order_id': row[0], 'item_name': row[1], 'quantity': row[2], 'username' : row[3], 'status' : row[4]}
+            row = {'orderId': row[0], 'item_name': row[1], 'quantity': row[2], 'username' : row[3], 'status' : row[4]}
             orders.append(row)
         return orders
 
@@ -132,22 +132,17 @@ class OrderDbQueries(Database):
         result = self.cur.fetchone()
         return result
 
-    def update_order_status(self, order_id):
-        orders = OrderDbQueries().fetch_all_orders_by_parameter('orders', 'order_id', order_id)
+    def update_order_status(self, orderId):
+        orders = OrderDbQueries().fetch_all_orders_by_parameter('orders', 'orderId', orderId)
         for order in orders:
-            if order_id:
+            if orderId:
                 if order['status'] == 'New':
-                    query = "UPDATE orders SET status = 'Processing' WHERE order_id = order_id"
+                    query = "UPDATE orders SET status = 'Processing' WHERE orderId = orderId"
                     self.cur.execute(query)
                 elif order['status'] == 'Processing':
-                    query = "UPDATE orders SET status = 'Completed' WHERE order_id = order_id"
+                    query = "UPDATE orders SET status = 'Completed' WHERE orderId = orderId"
                     self.cur.execute(query)
-        
 
-
-
-        
-   
 
 class MenuDbQueries(Database):
     """This class handles database transactions for the menu"""
