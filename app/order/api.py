@@ -34,19 +34,16 @@ class OrderView(MethodView):
     
     decorators = [token_required]
     def get(self, current_user):
-        order_db = OrderDbQueries()
+        """User view their orders"""
         username = current_user.username
-        orders = order_db.fetch_all_orders_by_parameter('orders', 'username', username)
-        for order in orders:
-            if order:
-                return jsonify({'orders': orders}), 200
-        return jsonify({'message' : 'You have not made any orders'})
-
+        orders = Order.get_orders(username)
+        return orders
+        
     
 class OrderManage(MethodView):
     decorators = [token_required]
     def get(self, current_user, orderId):
-        """Method for the admin to view orders"""
+        """Method for the Admin to view orders"""
         order_db = OrderDbQueries()
         if current_user.username == 'admin':
             if orderId:
@@ -54,21 +51,24 @@ class OrderManage(MethodView):
                 for order in query:
                    return jsonify({"orders" : order}), 200
                 return jsonify({'msg': "order not found "}), 404
-            else:
-                orders = order_db.fetch_all_orders()
-                if orders == []:
-                    return jsonify(
-                        {"message": " There are no orders orders at the moment."}), 200
-                return jsonify({"orders" : orders}), 200
+            all_orders = Order.get_all_orders()
+            return all_orders
         return jsonify({'message' : "You do not have admin rights."})
 
     def put(self, current_user, orderId):
-        """Method for the admin to update an order"""
+        """Method for the Admin to update an order"""
         order_db = OrderDbQueries()
+        data = request.get_json()
         if current_user.username == 'admin':
             if orderId:
-                query = orderId.fetch_by_parameter('orders', 'orderId', orderId)
-                order_db.update_order_status(orderId)
-                return jsonify ({'message' : query})
+                order_status = ['completed', 'cancelled', 'processing', 'New']
+                status = data['status']
+                if status in  order_status:
+                    query = order_db.fetch_by_parameter('orders', 'orderId', orderId)
+                    if query:
+                        query = (query[0], query[1], query[2], query[3], query[4])
+                        order_db.update_order_status(orderId, status)
+                    return jsonify ({'message' : query})
+                return jsonify ({'message' : 'Invalid Status'})
             return jsonify ({'message' : "Order not Found"})
         return jsonify({'message' : "You do not have admin rights."})

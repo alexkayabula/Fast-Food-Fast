@@ -49,13 +49,6 @@ class OrderDbQueries(Database):
         result = self.cur.fetchone()
         return result
 
-    def update_order_status(self, orderId):
-        orders = OrderDbQueries().fetch_all_orders_by_parameter('orders', 'orderId', orderId)
-        for order in orders:
-            if orderId:
-                if order['status'] == 'New':
-                    query = "UPDATE orders SET status = 'Processing' WHERE orderId = orderId"
-                    self.cur.execute(query)
-                elif order['status'] == 'Processing':
-                    query = "UPDATE orders SET status = 'Completed' WHERE orderId = orderId"
-                    self.cur.execute(query)
+    def update_order_status(self, orderId, status):
+        query = "UPDATE orders SET status = '{}' WHERE orderId = {}".format(status, orderId)
+        self.cur.execute(query)

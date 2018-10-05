@@ -23,6 +23,7 @@ class MenuView(MethodView):
         return jsonify({'message' : "You do not have admin rights"})
     
     decorators = [token_required]
+    """Get all food items"""
     def get(self, current_user):
         menu = Menu.get_all_menu()
         return menu

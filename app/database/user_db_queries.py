@@ -21,7 +21,7 @@ class UserDbQueries(Database):
         self.conn.commit()
         
     def fetch_all_users(self):
-        """ Fetches all order recods from the database"""
+        """ Fetches all order records from the database"""
         self.cur.execute("SELECT * FROM users ")
         rows = self.cur.fetchall()
         users = []
