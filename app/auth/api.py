@@ -10,7 +10,7 @@ from app.auth.auth_helper import validate_user, validate_login
 from app.database.database import Database
 from app.database.user_db_queries import UserDbQueries
 
-class RegistrationView(MethodView):
+class SignupView(MethodView):
     """This class-based view registers a new user."""
 
     def post(self):
