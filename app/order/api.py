@@ -34,19 +34,16 @@ class OrderView(MethodView):
     
     decorators = [token_required]
     def get(self, current_user):
-        order_db = OrderDbQueries()
+        """User view their orders"""
         username = current_user.username
-        orders = order_db.fetch_all_orders_by_parameter('orders', 'username', username)
-        for order in orders:
-            if order:
-                return jsonify({'orders': orders}), 200
-        return jsonify({'message' : 'You have not made any orders'})
-
+        orders = Order.get_orders(username)
+        return orders
+        
     
 class OrderManage(MethodView):
     decorators = [token_required]
     def get(self, current_user, orderId):
-        """Method for the admin to view orders"""
+        """Method for the Admin to view orders"""
         order_db = OrderDbQueries()
         if current_user.username == 'admin':
             if orderId:
@@ -55,15 +52,11 @@ class OrderManage(MethodView):
                    return jsonify({"orders" : order}), 200
                 return jsonify({'msg': "order not found "}), 404
             else:
-                orders = order_db.fetch_all_orders()
-                if orders == []:
-                    return jsonify(
-                        {"message": " There are no orders orders at the moment."}), 200
-                return jsonify({"orders" : orders}), 200
+                Order.get_all_orders()
         return jsonify({'message' : "You do not have admin rights."})
 
     def put(self, current_user, orderId):
-        """Method for the admin to update an order"""
+        """Method for the Admin to update an order"""
         order_db = OrderDbQueries()
         if current_user.username == 'admin':
             if orderId:
