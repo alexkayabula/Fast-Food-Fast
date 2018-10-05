@@ -8,5 +8,5 @@ db = Database('postgres://eyzxekqeckzgjc:78e620ab085ae62514bd49db48ce33ec3c50df7
 
 if __name__ == '__main__':
     db.create_tables()
-    port = int(os.environ.get('PORT', 8000))
+    port = int(os.environ.get('PORT', 5432))
     app.run(port=port)
