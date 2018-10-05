@@ -10,7 +10,7 @@ from app.database.menu_db_queries import MenuDbQueries
 class MenuView(MethodView):
     decorators = [token_required]
     def post(self, current_user):
-        """Add a new food item"""
+        """Add a new food item to menu"""
         data = request.get_json()
         if current_user.username == 'admin':
             if validate_menu(data) != 'valid':
