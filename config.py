@@ -23,7 +23,7 @@ class TestingConfiguration(Config):
 
 class ProductionConfiguration(Config):
     """Configurations for Production."""
-    DEBUG = False
+    DEBUG = True
     DATABASE_URL = 'postgres://xarplzfllomlvr:b52cdb7c12c1d0175f7569876e8ceaae7d36a3387b93b876f58c67839c95b9a2@ec2-107-22-175-33.compute-1.amazonaws.com:5432/d498qmhc8lmfvk'
     
 
