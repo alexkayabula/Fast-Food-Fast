@@ -4,7 +4,7 @@ from app import create_app
 from app.database.database import Database
 
 app = create_app('PRODUCTION')
-db = Database('postgres://eyzxekqeckzgjc:78e620ab085ae62514bd49db48ce33ec3c50df764c5822e6d8ec9d7607527534@ec2-23-23-80-20.compute-1.amazonaws.com:5432/dac1le4vb3d4of')
+db = Database('postgres://xarplzfllomlvr:b52cdb7c12c1d0175f7569876e8ceaae7d36a3387b93b876f58c67839c95b9a2@ec2-107-22-175-33.compute-1.amazonaws.com:5432/d498qmhc8lmfvk')
 
 if __name__ == '__main__':
     db.create_database('order_db')
