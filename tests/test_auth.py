@@ -13,7 +13,7 @@ class TestAuth(TestBase):
             'username': 'username',
             'password': 'password'
         }
-        response = self.client.post('/api/v2/auth/register',
+        response = self.client.post('/api/v2/auth/signup',
                                     data=json.dumps(test_user),
                                     content_type='application/json')
         self.assertIn('You registered successfully. Please login.',
@@ -27,7 +27,7 @@ class TestAuth(TestBase):
             'username': '#$%',
             'password': '@#$%'
         }
-        response = self.client.post('/api/v2/auth/register',
+        response = self.client.post('/api/v2/auth/signup',
                                     data=json.dumps(inv_char),
                                     content_type='application/json')
         self.assertEqual(response.status_code, 406)
@@ -39,14 +39,14 @@ class TestAuth(TestBase):
             'username': ' ',
             'password': ''
         }
-        response = self.client.post('/api/v2/auth/register',
+        response = self.client.post('/api/v2/auth/signup',
                                     data=json.dumps(inv_char),
                                     content_type='application/json')
         self.assertEqual(response.status_code, 406)
 
     def test_register_non_json_input(self):
         """ Tests register with non valid JSON input """
-        response = self.client.post('/api/v2/auth/register',
+        response = self.client.post('/api/v2/auth/signup',
                                     data='some non json data',
                                     content_type='application/json')
         self.assertEqual(response.status_code, 400)
@@ -126,7 +126,7 @@ class TestAuth(TestBase):
             'username': 'rightuser',
             'password': 'rightpassword'
         }
-        self.client.post('/api/v2/auth/register',
+        self.client.post('/api/v2/auth/signup',
                          data=json.dumps(user),
                          content_type='application/json')
         user_login = {

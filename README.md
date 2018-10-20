@@ -52,5 +52,10 @@ Create a virtual environment
 Install the dependencies
  - pip install -r requirements.txt
 
-# Unittesting
+# Unittesting and Coverage Reports
 - nosetests --with-coverage --cover-package=app && coverage report
+- coverage report
+- coverage html -i
+
+# Hosting
+- https://fast-food-fast-deploy.herokuapp.com/api/v2/signup

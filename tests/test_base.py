@@ -52,7 +52,7 @@ class TestBase(unittest.TestCase):
 
     def create_valid_user(self):
         """ Registers a user to be used for tests"""
-        response = self.client.post('/api/v2/auth/register',
+        response = self.client.post('/api/v2/auth/signup',
                                     data=json.dumps(self.valid_user),
                                     content_type='application/json')
         return response
