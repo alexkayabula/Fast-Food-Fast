@@ -1,7 +1,7 @@
 import os
 import psycopg2
 from app import create_app
-from app.database.database import *
+from app.database.database import Database
 
 app = create_app('DEFAULT')
 db = Database('postgresql://postgres:k0779211758aj@localhost:5432/order_db')
