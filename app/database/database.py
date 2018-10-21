@@ -23,10 +23,6 @@ class Database:
         self.conn.autocommit = True
         self.cur = self.conn.cursor()
 
-    def create_database(self, db_name):
-        """Creates a database to be used in production"""
-        self.cur.execute('CREATE DATABASE {};'.format(db_name))
-
     def trancate_table(self, table):
         """Trancates the table"""
         self.cur.execute("TRUNCATE TABLE {} RESTART IDENTITY".format(table))
