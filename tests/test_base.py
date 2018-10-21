@@ -28,19 +28,30 @@ class TestBase(unittest.TestCase):
         'price': "3000",
     }
 
+    invalid_order = {
+            'item_name': '@#$%',
+            'quantity': '@#$%',
+        }
+
     valid_order_item = {
         'item_name': 'fish',
-        'quantity': "3",
+        'quantity': '3',
     }
-    post_menu = {
-        'item_name': 'fish',
-        'price': "3000"
+    
+    valid_update = {
+        'status' : 'completed'
     }
-    post_order = {
-        'item_name' : 'eggs',
-        'quantity' : '4'
+
+    invalid_update = {
+        'status' : ''
     }
-    post_order1 ={
+
+    order_invalid_quantity = {
+            'item_name': 'fish',
+            'quantity': '@#',
+        }
+
+    order_empty_key ={
         '' : 'fish',
         'quantity' : '5'
     }
@@ -75,34 +86,17 @@ class TestBase(unittest.TestCase):
         return response
     def create_valid_order(self):
         """ Creates a valid order to be used for tests """
-        response = self.client.post('api/v2/menu',
+        response = self.client.post('api/v2/users/orders',
                                     data=json.dumps(self.valid_order_item),
                                     content_type='application/json',
                                     headers={'Authorization':
                                              self.get_token()})
         return response
-        
-    def create_post_menu(self):
-        """ Creates a valid menu to be used for tests """
-        response = self.client.post('api/v2/menu',
-                                    data=json.dumps(self.post_menu),
-                                    content_type='application/json',
-                                    headers={'Authorization':
-                                             self.get_token()})
-        return response
-    def create_post_order(self):
-        """ Creates a valid order to be used for tests """
-        response = self.client.post('api/v2/users/orders',
-                                    data=json.dumps(self.post_order),
-                                    content_type='application/json',
-                                    headers={'Authorization':
-                                             self.get_token()})
-        return response
-
-    def create_post_order_empty_keys(self):
-        """ Creates an order with empty keys """
-        response = self.client.post('api/v2/users/orders',
-                                    data=json.dumps(self.post_order1),
+         
+    def update_an_order(self):
+        """ Testing updating an order """
+        response = self.client.put('api/v2/orders/<int:orderId>',
+                                    data=json.dumps(self.valid_update),
                                     content_type='application/json',
                                     headers={'Authorization':
                                              self.get_token()})

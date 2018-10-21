@@ -12,6 +12,7 @@ class UserDbQueries(Database):
         Database.__init__(self, app.config['DATABASE_URL'])
 
     def insert_user_data(self, data):
+        """Insert a new user record into the database"""
         query = "INSERT INTO users (name, username, password, admin_status)\
             VALUES('{}','{}', '{}', '{}');".format(data['name'],
                                              data['username'],
@@ -19,13 +20,3 @@ class UserDbQueries(Database):
                                              (data['password']), False)
         self.cur.execute(query)
         self.conn.commit()
-        
-    def fetch_all_users(self):
-        """ Fetches all order records from the database"""
-        self.cur.execute("SELECT * FROM users ")
-        rows = self.cur.fetchall()
-        users = []
-        for row in rows:
-            row = {'user_id': row[0], 'name': row[1], 'username': row[2], 'admin_status': row[3]}
-            users.append(row)
-        return users

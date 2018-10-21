@@ -8,9 +8,9 @@ from app.database.menu_db_queries import MenuDbQueries
 
 
 class Order:
-    '''  Defines a Order class'''
+    '''  Defines an Order class '''
     def __init__(self, orderId, item_name, quantity, username, status):
-        ''' Initializes the order object'''
+        ''' Initialize the order object '''
         self.orderId = orderId
         self.item_name = item_name
         self.quantity = quantity
@@ -19,9 +19,9 @@ class Order:
 
     @classmethod
     def get_orders(cls, username):
-        '''User orders'''
+        ''' User orders '''
         order_db = OrderDbQueries()
-        orders = order_db.fetch_all_orders_by_parameter('orders', 'username', username)
+        orders = order_db.fetch_specific_order_by_parameter('orders', 'username', username)
         for order in orders:
             if order:
                 return jsonify({'orders': orders}), 200
@@ -29,9 +29,10 @@ class Order:
     
     @classmethod
     def get_all_orders(cls):
+        ''' All users orders '''
         order_db = OrderDbQueries()
         orders = order_db.fetch_all_orders()
         if orders == []:
             return jsonify(
-                {"message": " There are no orders orders at the moment."}), 200
+                {"message": " There are no orders at the moment."}), 200
         return jsonify({"orders" : orders}), 200
