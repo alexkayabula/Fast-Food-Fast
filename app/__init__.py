@@ -6,7 +6,8 @@ from app.error_handler import *
 
 
 def create_app(config_name):
-    """Creates the application and registers the blueprints
+    """
+        Creates the application and registers the blueprints
         with the application
     """
     app = Flask(__name__)

@@ -9,7 +9,7 @@ def validate_user(data):
             return 'Invalid entry, Input should be in a valid json format'
         if not data['name'].strip() or not data['username'].strip()\
                 or not data['password'].strip():
-            return "all fields are required"
+            return "All fields are required"
         
         if not re.match("^[a-zA-Z]*$", data['name'].strip()):
             return "The name should only contain alphabatic characters"

@@ -30,8 +30,7 @@ class OrderView(MethodView):
                     response = {'message': 'You have placed an order successfully.'}
                     return make_response(jsonify(response)), 201
             return jsonify({'message': 'Item Not Found'})
-        return jsonify({'message': validate_order(data)}), 201
-    
+        
     decorators = [token_required]
     def get(self, current_user):
         """User view their orders"""
@@ -47,7 +46,7 @@ class OrderManage(MethodView):
         order_db = OrderDbQueries()
         if current_user.username == 'admin':
             if orderId:
-                query = order_db.fetch_all_orders_by_parameter('orders', 'orderId', orderId)
+                query = order_db.fetch_specific_order_by_parameter('orders', 'orderId', orderId)
                 for order in query:
                    return jsonify({"orders" : order}), 200
                 return jsonify({'msg': "order not found "}), 404
@@ -66,7 +65,7 @@ class OrderManage(MethodView):
                 status = data['status']
                 if status in  order_status:
                     order_db.update_order_status(orderId, status)
-                    updated_order = order_db.fetch_by_parameter('orders', 'orderId', orderId)
+                    updated_order = order_db.fetch_specific_order_by_parameter('orders', 'orderId', orderId)
                     return jsonify ({'message' : updated_order})
                 return jsonify ({'message' : 'Invalid Status'})
             return jsonify ({'message' : "Order not Found"})

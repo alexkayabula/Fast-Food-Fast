@@ -13,14 +13,14 @@ class MenuDbQueries(Database):
         Database.__init__(self, app.config['DATABASE_URL'])
 
     def insert_menu_data(self, data):
-        """Insert a new menu item to the database"""
+        """Insert a new menu item into the database"""
         query = "INSERT INTO menu (item_name, price)\
         VALUES('{}', '{}');".format(data['item_name'], data['price'])
         self.cur.execute(query)
         self.conn.commit()
 
     def fetch_all_menu(self):
-        """ Fetches all order recods from the database"""
+        """ Fetches all menu records from the database"""
         self.cur.execute("SELECT * FROM menu ")
         rows = self.cur.fetchall()
         orders = []
