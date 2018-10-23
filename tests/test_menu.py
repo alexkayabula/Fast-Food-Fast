@@ -64,7 +64,7 @@ class TestMenu(TestBase):
                                     headers={'Authorization':
                                              self.get_token()})
         self.assertEqual(response.status_code, 406)
-        self.assertIn('Inputs should only contain numeric characters only', str(response.data))
+        self.assertIn('The price should only contain numeric characters', str(response.data))
 
     def test_create_menu_with_invalid_json(self):
         """ Tests creating a menu item with invalid json """

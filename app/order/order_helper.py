@@ -8,7 +8,7 @@ def validate_order(data):
         if not data['item_name'].strip()  or not data['quantity'].strip():
             return "All fields are required"
         if not re.match("^[a-zA-Z]*$", data['item_name'].strip()):
-            return "order should only contain alphabetic characters "
+            return "Item name should only contain alphabetic characters "
         elif not re.match("^[1-9_]*$", data['quantity'].strip()):
             return "Quantity should be an integer"
         else:

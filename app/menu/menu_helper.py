@@ -6,11 +6,11 @@ def validate_menu(data):
         if not type(data['item_name']) == str or not type(data['price']) == str:
             return 'Invalid entry, Input should be in a valid json format'
         if not data['item_name'].strip() or not data['price'].strip():
-            return  "all fields are required"
+            return  "All fields are required"
         if not re.match("^[a-zA-Z]*$", data['item_name'].strip()):
-            return "Input should contain alphabetic characters only"
+            return "The item name should only contain alphabetic characters"
         elif  not re.match("^[0-9]*$", data['price'].strip()):
-            return "Inputs should only contain numeric characters only"
+            return "The price should only contain numeric characters"
         else:
             return 'valid'
     except KeyError:

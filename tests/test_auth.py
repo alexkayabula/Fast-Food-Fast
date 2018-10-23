@@ -31,7 +31,7 @@ class TestAuth(TestBase):
                                     data=json.dumps(inv_char),
                                     content_type='application/json')
         self.assertEqual(response.status_code, 406)
-        self.assertIn("Inputs should only contain alphanemeric characters", str(response.data))
+        self.assertIn("The username should only contain alphabetic characters", str(response.data))
 
     def test_register_with_blank_inputs(self):
         """ Tests creating a new user with blank """

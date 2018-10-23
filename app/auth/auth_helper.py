@@ -12,10 +12,11 @@ def validate_user(data):
             return "All fields are required"
         
         if not re.match("^[a-zA-Z]*$", data['name'].strip()):
-            return "The name should only contain alphabatic characters"
-        elif not re.match("^[a-zA-Z]*$", data['username'].strip()) or\
-            not re.match("^[a-zA-Z0-9_]*$", data['password'].strip()):
-            return "Inputs should only contain alphanemeric characters"
+            return "The name should only contain alphabetic characters"
+        if not re.match("^[a-zA-Z]*$", data['username'].strip()):
+            return "The username should only contain alphabetic characters"
+        elif not re.match("^[a-zA-Z0-9_]*$", data['password'].strip()):
+            return "The password should only contain alphanumeric characters"
         else:
             return 'valid'
     except KeyError:
@@ -28,10 +29,11 @@ def validate_login(data):
         if not type(data['username']) == str or not type(data['password']) == str:
             return 'Invalid entry, Input should be in a valid json format'
         if not data['username'].strip() or not data['password'].strip():
-          return  "all fields are required"
-        if not re.match("^[a-zA-Z0-9_ ]*$", data['username'].strip()) or\
-            not re.match("^[a-zA-Z0-9_]*$", data['password'].strip()):
-            return "Inputs should only contain alphanemeric characters"
+          return  "All fields are required"
+        if not re.match("^[a-zA-Z]*$", data['username'].strip()):
+            return "The username should only contain alphabetic characters"
+        elif not re.match("^[a-zA-Z0-9_]*$", data['password'].strip()):
+            return "The password should only contain alphanumeric characters"
         else:
             return 'valid'
     except KeyError:
