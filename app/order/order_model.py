@@ -24,7 +24,7 @@ class Order:
         orders = order_db.fetch_specific_order_by_parameter('orders', 'username', username)
         for order in orders:
             if order:
-                return jsonify({'orders': orders}), 200
+                return jsonify({orders}), 200
         return jsonify({'message' : 'You have not made any orders'})
     
     @classmethod
