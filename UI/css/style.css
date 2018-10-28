@@ -169,7 +169,7 @@ header a:hover{
 .loginbox{
   border-radius: 20px;
   width: 550px;
-  height: 550px;
+  height: 650px;
   background: rgba(0, 0, 0, 0.8);
   color: white;
   top: 50%;
@@ -226,15 +226,15 @@ header a:hover{
 }
 
 
-.belowlinks {
+.belowlinks{
   color: rgb(18, 108, 243); 
   text-align:center;
   background-color: transparent; 
-  text-decoration-line:bold;
+  text-decoration: none;
 }
 
-a:link{
-  color: rgb(18, 108, 243);  
+.belowlinks a:link{
+  color:rgb(18, 108, 243);    /*rgb(18, 108, 243);*/  
   background-color: transparent;
   text-decoration: none;
 }
@@ -260,30 +260,34 @@ table {
 }
 
 table, th, td {
-border-collapse: collapse;
+border-collapse:collapse;
+border: 1px solid rgb(0, 3, 46);
+
+
 
 }
 
 th, td {
   padding: 15px;
   text-align: left;
-
+  width: 120px;
+  height: 1px;
 }
-table#t01 tr:nth-child(even) {
+
+table#t01 tr {
   background-color: #fff;
   color:rgb(0, 3, 46);
-  
-  }
-  table#t01 tr:nth-child(odd) {
-  background-color: #fff;
-  color:rgb(0, 3, 46);
- 
+  width: 120px;
+  height: 1px;
  
   }
-  table#t01 th {
-    background-color: rgb(0, 3, 46);
-    color:#ffc107 ;
-    }
+
+table#t01 th {
+  background-color:rgb(0, 3, 46);
+  color:#ffc107 ;
+  width: 80px;
+  height: 0.04em;
+  }
 
   .btn {
     border: black;
@@ -428,4 +432,23 @@ color:#ffc107 ;
   margin-left: 160px; /* Same as the width of the sidenav */
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
+}
+
+/*Pop Ups*/
+#danger{
+  text-align: center;
+  color:red;
+  font-size: 28px;
+}
+
+#success{
+  text-align: center;
+  color:green;
+  font-size: 28px;
+}
+
+#message{
+  text-align: center;
+  color:red;
+  font-size: 28px;
 }
