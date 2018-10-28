@@ -82,14 +82,7 @@ header a:hover{
     min-height:100%;
   }
   
-  .footer {
-    background: rgb(0, 3, 46);
-    color:white;
-    border-top:#ffc107 3px solid;
-    border-bottom:#ffc107 3px solid;
-    text-align:center;
-    padding:50px 80px;
-  }
+  
   
   .ptext{
     position: absolute;
@@ -106,20 +99,6 @@ header a:hover{
     
   }
   
-
-  
- /*  social media icons */
-
-.fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 30px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-  border-radius: 50%;
-}
-
 /*Animated Button*/
 
 .button {
@@ -223,20 +202,6 @@ header a:hover{
   font-size: 12px;
   line-height: 20px;
   color: #ffc107;
-}
-
-
-.belowlinks{
-  color: rgb(18, 108, 243); 
-  text-align:center;
-  background-color: transparent; 
-  text-decoration: none;
-}
-
-.belowlinks a:link{
-  color:rgb(18, 108, 243);    /*rgb(18, 108, 243);*/  
-  background-color: transparent;
-  text-decoration: none;
 }
 
 a:hover {
