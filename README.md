@@ -1,27 +1,28 @@
 # Fast Food Fast
-  Fast-Food-Fast is a food delivery service app for a restaurant.
+Fast-Food-Fast is a food delivery service app for a restaurant.
 
-# Features
-- Sign In and Sign Up to use the app
-- Users can make a food order.
-- Users can view the history of food orders.
-- Admins can add, edit and delete food items.
+# Features 
 
-# Requirements and Tools
-- Web Browser e.g Google Chrome
+- Users can create an account and log in
+- A user should be able to order for food
+- The admin should be able to add,edit or delete the fast-food items
+- The admin should be able to see a list of fast-food items
+- The Admin user should be able to do the following:
+- See a list of orders
+- Accept and decline orders
+- Mark orders as completed
+- A user should be able to see a history of ordered food
 
-# How To Get Started
-- Install a web browser e.g Google chrome.
-- Install a source code editor e.g Vscode
-- Clone the project repository hosted using, git clone https://github.com/alexkayabula/Fast-Food-Fast.git
+# Requirements
+
+- Web browser for example, chrome, mozilla, Internet explorer
+
+# Access To the app
+
 - View the UI at https://alexkayabula.github.io/Fast-Food-Fast/UI/index.html
 
-# Languages Used
+# Technologies Used
 - Html
 - Css
-
-# Author
-- Kayabula Alex Joseph
-
-# Acknolegdements
-- The Internet
+- Vanilla javascript
+- Fetch API
