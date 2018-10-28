@@ -7,7 +7,7 @@ function update_order(e, orderId){
     e.preventDefault()
     let status = document.getElementById('status').value;
     localStorage.setItem('id', orderId);
-    fetch(`https://fast-food-fast-deploy.herokuapp.com/api/v2/orders/${orderId}`, {
+    fetch(`https://fast-food-fast-deploy.herokuapp.com/api/v2/orders/4`, {
       method:'PUT',
       headers: {
         'Authorization':localStorage.getItem("access_token"),
