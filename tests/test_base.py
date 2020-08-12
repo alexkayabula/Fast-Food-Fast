@@ -57,7 +57,9 @@ class TestBase(unittest.TestCase):
     }
 
     def setUp(self):
-        db = Database('postgresql://postgres:k0779211758aj@localhost:5432/test_db')
+        """Example"""
+        """db = Database('postgresql://YOUR_DATABASE_USERNAME:YOUR_DATABASE_PASSWORD@localhost:5432/YOUR_DATABASE_NAME')"""
+        db = Database('postgresql://admin:password@localhost:5432/test_db')
         db.create_tables()
         self.create_valid_user()
 
@@ -104,7 +106,7 @@ class TestBase(unittest.TestCase):
 
     def tearDown(self):
         db = Database(
-            'postgresql://postgres:k0779211758aj@localhost:5432/test_db')
+            'postgresql://admin:password@localhost:5432/test_db')
         db.trancate_table("users")
         db.trancate_table("orders")
         db.trancate_table("menu")
