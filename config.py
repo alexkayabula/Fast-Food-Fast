@@ -7,7 +7,7 @@ class Config(object):
     SECRET = os.getenv("SECRET")
     # DATABASE_URL = os.getenv("DATABASE_URL")
     """DATABASE_URL = postgresql://YOUR_DATABASE_USERNAME:YOUR_DATABASE_PASSWORD@localhost:5432/YOUR_DATABASE_NAME')"""
-    DATABASE_URL = 'postgresql://admin:password@localhost:5432/order_db'
+    DATABASE_URL = 'postgresql://postgres:k0779211758aj@localhost:5432/order_db'
 
 
 class DevelopmentConfiguration(Config):
