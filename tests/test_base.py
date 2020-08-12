@@ -106,7 +106,7 @@ class TestBase(unittest.TestCase):
 
     def tearDown(self):
         db = Database(
-            'postgresql://admin:password@localhost:5432/test_db')
+            'postgresql://postgres:k0779211758aj@localhost:5432/test_db')
         db.trancate_table("users")
         db.trancate_table("orders")
         db.trancate_table("menu")
