@@ -59,7 +59,7 @@ class TestBase(unittest.TestCase):
     def setUp(self):
         """Example"""
         """db = Database('postgresql://YOUR_DATABASE_USERNAME:YOUR_DATABASE_PASSWORD@localhost:5432/YOUR_DATABASE_NAME')"""
-        db = Database('postgresql://postgres:k0779211758aj@localhost:5432/order_db')
+        db = Database('postgresql://postgres:k0779211758aj@localhost:5432/test_db')
         db.create_tables()
         self.create_valid_user()
 
