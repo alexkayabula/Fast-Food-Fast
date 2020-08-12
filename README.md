@@ -46,11 +46,18 @@ Fast-Food-Fast is a food delivery service app for a restaurant.
 Clone this repository
 - git clone https://github.com/alexkayabula/Fast-Food-Fast.git
 
-Create a virtual environment
+Create a virtual environment and activate it
 - python -m venv env
+- source env/bin/activate  
 
 Install the dependencies
- - pip install -r requirements.txt
+- pip install -r requirements.txt
+
+Create a Postgres Database and set the credentials in the code(Its recommended to use environment  variables )
+- db = Database('postgresql://YOUR_DATABASE_USERNAME:YOUR_DATABASE_PASSWORD@localhost:5432/YOUR_DATABASE_NAME')
+
+Run the API
+- python3 run.py
 
 # Unittesting and Coverage Reports
 - nosetests --with-coverage --cover-package=app && coverage report
